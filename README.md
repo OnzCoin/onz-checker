@@ -1,7 +1,7 @@
 # onz-checker
 Current version: 1.0
 
-This script checks the status of your Onz-node by using PHP.<br>
+This script checks the status of your ONZ node by using PHP.<br>
 Feel free to rewrite in Python or Bash. 
  
 This script will also check whether your node has forked or not.<br>
@@ -75,7 +75,7 @@ $telegramApiKey 	= "1122334455:AAEhBOweik6ad9r_QXMENQjcrGbqCr4K-bs";
 ## Contact 
 * E-mail: [hi@onzcoin.com](mailto:hi@onzcoin.com)
 
-## Contributors
+## Contributors/Authors
 lepetitjan
 * Twitter: [@lepetitjan](https://twitter.com/lepetitjan) 
 * E-mail: [lepetitjan@icloud.com](mailto:lepetitjan@icloud.com) 
