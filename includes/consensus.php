@@ -1,5 +1,9 @@
 <?php
   /**
+   * @author Mars
+   * @link https://github.com/OnzCoin/onz-checker
+   * @license https://github.com/OnzCoin/onz-checker/blob/master/LICENSE
+   * 
    * @author Jan
    * @link https://github.com/Oxycoin/oxycoin-checker
    * @license https://github.com/Oxycoin/oxycoin-checker/blob/master/LICENSE
@@ -75,7 +79,7 @@ echo "[ CONSENSUS ]\n";
             
             // Send Telegram
             if($telegramEnable === true){
-              $Tmsg = gethostname().": No healthy server online. Going to restart Oxy-node for you..";
+              $Tmsg = gethostname().": No healthy server online. Going to restart onz node for you..";
               passthru("curl -s -d 'chat_id=$telegramId&text=$Tmsg' $telegramSendMessage >/dev/null");
             }
 
@@ -159,7 +163,7 @@ echo "[ CONSENSUS ]\n";
             
             // Send Telegram
             if($telegramEnable === true){
-              $Tmsg = gethostname().": No healthy server online. Going to restart Oxy-node for you..";
+              $Tmsg = gethostname().": No healthy server online. Going to restart onz node for you..";
               passthru("curl -s -d 'chat_id=$telegramId&text=$Tmsg' $telegramSendMessage >/dev/null");
             }
 

@@ -1,5 +1,9 @@
 <?php
   /**
+   * @author Mars
+   * @link https://github.com/OnzCoin/onz-checker
+   * @license https://github.com/OnzCoin/onz-checker/blob/master/LICENSE
+   * 
    * @author Jan
    * @link https://github.com/Oxycoin/oxycoin-checker
    * @license https://github.com/Oxycoin/oxycoin-checker/blob/master/LICENSE
@@ -33,8 +37,8 @@ echo "\t\t\tGoing to check for forked status now...\n";
       	
       	}
 
-// Tail oxycoin.log
-	$last = tailCustom($oxycoinlog, $linestoread);
+// Tail onzcoin.log
+	$last = tailCustom($onzcoinlog, $linestoread);
 
 // Count how many times the fork message appears in the tail
 	$count = substr_count($last, $msg);
@@ -47,7 +51,7 @@ echo "\t\t\tGoing to check for forked status now...\n";
 // If counter + current count is greater than $max_count, take action...
     if (($counter + $count) >= $max_count) {
 
-        // If oxy-snapshot directory exists..
+        // If onz-snapshot directory exists..
         if(file_exists($snapshotDir)){
           echo "\t\t\tHit max_count. I am going to restore from a snapshot.\n";
           if($telegramEnable === true){
@@ -57,7 +61,7 @@ echo "\t\t\tGoing to check for forked status now...\n";
 
           // Perform snapshot restore
           passthru("cd $pathtoapp && forever stop app.js");
-          passthru("cd $snapshotDir && echo y | ./oxy-snapshot.sh restore");
+          passthru("cd $snapshotDir && echo y | ./onz-snapshot.sh restore");
           passthru("cd $pathtoapp && forever start app.js");
 
           // Reset counters
@@ -67,7 +71,7 @@ echo "\t\t\tGoing to check for forked status now...\n";
         }else{
           echo "\t\t\tWe hit max_count and want to restore from snapshot.\n
                 \t\t\tHowever, path to snapshot directory ($snapshotDir) does not seem to exist.\n
-                \t\t\tDid you install oxy-snapshot?\n";
+                \t\t\tDid you install onz-snapshot?\n";
         }
 
 // If counter + current count is not greater than $max_count, add current count to our database...
@@ -89,17 +93,17 @@ echo "\t\t\tGoing to check for forked status now...\n";
     		echo "\t\t\tIt's safe to create a daily snapshot and the setting is enabled.\n";
     		echo "\t\t\tLet's check if a snapshot was already created today...\n";
     		
-    		// Check if path to oxy-snapshot exists..
+    		// Check if path to onz-snapshot exists..
         if(file_exists($snapshotDir)){
           
-          $snapshots = glob($snapshotDir.'snapshot/oxycoin_db_main'.date("d-m-Y").'*.snapshot.tar');
+          $snapshots = glob($snapshotDir.'snapshot/onzcoin_db_main'.date("d-m-Y").'*.snapshot.tar');
           if (!empty($snapshots)) {
         
             echo "\t\t\tA snapshot for today already exists:\n";
               echo "\t\t\t".$snapshots[0]."\n";
             
             echo "\t\t\tGoing to remove snapshots older than $max_snapshots days...\n";
-              $files = glob($snapshotDir.'snapshot/oxycoin_db*.snapshot.tar');
+              $files = glob($snapshotDir.'snapshot/onzcoin_db*.snapshot.tar');
               foreach($files as $file){
                 if(is_file($file)){
                     if(time() - filemtime($file) >= 60 * 60 * 24 * $max_snapshots){
@@ -117,7 +121,7 @@ echo "\t\t\tGoing to check for forked status now...\n";
             echo "\t\t\tNo snapshot exists for today, I will create one for you now!\n";
               
             ob_start();
-            $create = passthru("cd $snapshotDir && ./oxy-snapshot.sh create");
+            $create = passthru("cd $snapshotDir && ./onz-snapshot.sh create");
             $check_createoutput = ob_get_contents();
             ob_end_clean();
 
@@ -135,9 +139,9 @@ echo "\t\t\tGoing to check for forked status now...\n";
 
           }
         }else{
-          // Path to oxy-snapshot does not exist..
-          echo "\t\t\tYou have oxy-snapshot enabled, but the path to oxy-snapshot does not seem to exist.\n
-                \t\t\tDid you install oxy-snapshot?\n";
+          // Path to onz-snapshot does not exist..
+          echo "\t\t\tYou have onz-snapshot enabled, but the path to onz-snapshot does not seem to exist.\n
+                \t\t\tDid you install onz-snapshot?\n";
         }
 
     	}

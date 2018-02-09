@@ -1,5 +1,9 @@
 <?php
-	/**
+    /**
+   * @author Mars
+   * @link https://github.com/OnzCoin/onz-checker
+   * @license https://github.com/OnzCoin/onz-checker/blob/master/LICENSE
+   * 
    * @author Jan
    * @link https://github.com/Oxycoin/oxycoin-checker
    * @license https://github.com/Oxycoin/oxycoin-checker/blob/master/LICENSE

@@ -1,5 +1,9 @@
 <?php
   /**
+   * @author Mars
+   * @link https://github.com/OnzCoin/onz-checker
+   * @license https://github.com/OnzCoin/onz-checker/blob/master/LICENSE
+	 * 
    * @author Jan
    * @link https://github.com/Oxycoin/oxycoin-checker
    * @license https://github.com/Oxycoin/oxycoin-checker/blob/master/LICENSE
@@ -8,9 +12,9 @@
 echo "[ STATUS ]\n";
 echo "\t\t\tLet's check if our delegate is still running...\n";
 
-// Check status with oxy_manager.bash. Use PHP's ob_ function to create an output buffer
+// Check status with onz_manager.bash. Use PHP's ob_ function to create an output buffer
 	ob_start();
-  $check_status = passthru("cd $pathtoapp && bash oxy_manager.bash status | cut -z -b1-3");
+  $check_status = passthru("cd $pathtoapp && bash onz_manager.bash status | cut -z -b1-3");
 	$check_output = ob_get_contents();
 	ob_end_clean();
 
@@ -26,7 +30,7 @@ echo "\t\t\tLet's check if our delegate is still running...\n";
    	
     echo "\t\t\tStopping all forever processes...\n";
    		passthru("forever stopall >/dev/null");
-   	echo "\t\t\tStarting Oxycoin forever proces...\n";
+   	echo "\t\t\tStarting onz forever proces...\n";
    		passthru("cd $pathtoapp && forever start app.js >/dev/null");
    
   }else{
