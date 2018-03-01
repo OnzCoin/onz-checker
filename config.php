@@ -33,9 +33,9 @@ __________________________ */
 	$consensusEnable= false;                                // Enable consensus check? Be sure to check $nodes first..
 	$master         = true;                                 // Is this your master node? True/False
 	$masternode     = "https://127.0.0.1";                  // Master node with SSL
-	$masterport     = 7778;                                 // Master port with SSL
+	$masterport     = 11001;                                 // Master port with SSL
 	$slavenode      = "https://myslaveip";      		// Slave node with SSL
-	$slaveport      = 7778;                                 // Slave port with SSL
+	$slaveport      = 11001;                                 // Slave port with SSL
 	$threshold      = 50;                                   // Percentage of consensus threshold
 	$apiHost        = "$masternode:$masterport";		// Used to calculate $publicKey by $secret. Use $masternode or $slavenode
 	$secret         = array("");                            // Add your secrets here. If you want to forge multiple, add extra to the array. 
